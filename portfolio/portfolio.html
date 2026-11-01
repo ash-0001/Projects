@@ -1,0 +1,221 @@
+<title>Private Systems Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: a technical dossier. One left-aligned reading column, with wide figures and tables breaking out. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --fg: #17202e; --muted: #566274; --line: #cfd6e0;
+  --accent: #1d4fc4; --withheld-bg: #17202e; --withheld-fg: #f3f5f8; --placeholder: #8a4b00; --placeholder-bg: #fdf0d8;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161f; --surface: #1a212d; --fg: #e8ecf3; --muted: #9aa6b8; --line: #323c4c;
+  --accent: #86a9ff; --withheld-bg: #e8ecf3; --withheld-fg: #11161f; --placeholder: #ffc978; --placeholder-bg: #3a2a10; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #11161f; --surface: #1a212d; --fg: #e8ecf3; --muted: #9aa6b8; --line: #323c4c;
+  --accent: #86a9ff; --withheld-bg: #e8ecf3; --withheld-fg: #11161f; --placeholder: #ffc978; --placeholder-bg: #3a2a10; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font: 400 17px/1.6 var(--body); }
+.wrap { max-width: 960px; margin: 0 auto; padding-block: 56px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 64px; }
+h1, h2, h3, .label, th { font-family: var(--display); }
+h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-stretch: 85%; font-weight: 800; line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-stretch: 88%; font-weight: 700; line-height: 1.1; margin: 0; text-wrap: balance; }
+h3, .label { font-size: .74rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 0; }
+p { margin: 0; max-width: 66ch; }
+header { display: grid; gap: 16px; }
+.lede { font-size: 1.2rem; line-height: 1.5; }
+.byline { font: 400 .86rem/1.5 var(--mono); color: var(--muted); }
+code, .mono { font-family: var(--mono); font-size: .86em; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .95rem; line-height: 1.4; }
+th { font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; font-weight: 700; }
+th, td { padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.n { font-family: var(--mono); font-size: .88rem; white-space: nowrap; }
+.project { display: grid; gap: 24px; border-top: 3px solid var(--fg); padding-top: 20px; }
+.head { display: grid; gap: 6px; }
+.tag { font: 400 .84rem/1.4 var(--mono); color: var(--muted); }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
+.cols > div, .block { display: grid; gap: 6px; align-content: start; min-width: 0; }
+ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 66ch; }
+figure { margin: 0; display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--line); padding: 16px; min-width: 0; }
+figure svg { display: block; width: 100%; min-width: 760px; height: auto; color: var(--fg); }
+figcaption { font-size: .92rem; line-height: 1.45; color: var(--muted); max-width: 72ch; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 24px; margin: 0; }
+.stats div { display: grid; gap: 2px; align-content: start; }
+.stats dt { order: 2; font-size: .88rem; line-height: 1.3; color: var(--muted); }
+.stats dd { order: 1; margin: 0; font: 700 1.6rem/1.1 var(--display); font-stretch: 85%; font-variant-numeric: tabular-nums; }
+.withheld { background: var(--withheld-bg); color: var(--withheld-fg); }
+.withheld td, .withheld th { color: var(--withheld-fg); }
+.w-tag { font: 500 .78rem var(--mono); letter-spacing: .02em; }
+.foot { font-size: .92rem; color: var(--muted); display: grid; gap: 8px; border-top: 1px solid var(--line); padding-top: 16px; }
+.s { fill: none; stroke: currentColor; stroke-width: 1.4; }
+.a { fill: none; stroke: var(--accent); stroke-width: 2; }
+.ln { fill: none; stroke: currentColor; stroke-width: 1.3; }
+.t { fill: currentColor; font: 500 13px var(--display); }
+.u { fill: currentColor; font: 400 11.5px var(--mono); opacity: .78; }
+.at { fill: var(--accent); font: 700 13px var(--display); }
+.ah { fill: currentColor; }
+@media (max-width: 680px) { .cols { grid-template-columns: minmax(0, 1fr); } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wrap { gap: 48px; padding-block: 32px 48px; } body { font-size: 16px; } }
+</style>
+
+<div class="wrap">
+<header>
+  <p class="byline">ash · <a href="https://github.com/ash-0001">github.com/ash-0001</a></p>
+  <h1>Four systems, built privately, shown without the secrets</h1>
+  <p class="lede">A multi-broker trading stack in Rust, the tools that test it, and a language app shipped in a week. The code stays closed. The architecture and the numbers are here. On the trading work, strategy logic is withheld.</p>
+</header>
+
+<section class="scroll" aria-label="All four projects at a glance">
+  <table>
+    <thead><tr><th>Project</th><th>What it is</th><th>Code</th><th>Tests</th><th>Commits</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bloom</strong></td><td>One API across many brokers</td><td class="n">50.5k Rust<br>35.8k Svelte/TS</td><td class="n">414 Rust passing</td><td class="n">290</td></tr>
+      <tr><td><strong>Flow</strong></td><td>Durable workflow engine, live or backtest</td><td class="n">84.0k Rust</td><td class="n">1,077 Rust passing*</td><td class="n">450</td></tr>
+      <tr><td><strong>Mock broker</strong></td><td>Broker simulator for testing without a market</td><td class="n">12.3k Python<br>12.2k TS</td><td class="n">118 pytest passing</td><td class="n">65</td></tr>
+      <tr><td><strong>Slovko</strong></td><td>Language-learning app for web, iOS, Android</td><td class="n">1.6k Rust<br>4.8k JS</td><td class="n">13 Rust passing</td><td class="n">13</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="project" id="bloom">
+  <div class="head"><h2>Bloom</h2><p class="tag">Intent-trading server · January 2026 to present</p></div>
+  <div class="cols">
+    <div><h3>The problem</h3><p>Indian brokers describe the same market differently. The NSE cash segment is <code>nse_cm</code> at Kotak, <code>NSE_EQ</code> at Upstox and Dhan, and two separate fields at 5paisa. Order states, timestamps and tick feeds disagree too. Anything built on them ends up special-casing brokers.</p></div>
+    <div><h3>What I built</h3><p>One URL and one payload for placing orders, reading books and streaming prices, whichever broker is behind the account. Around it: a per-instrument candle store, a Replay broker that trades history at up to 500x, a Svelte web app and an Android app. I'm porting the backend from Python to Rust route by route.</p></div>
+  </div>
+  <figure>
+    <div class="scroll">
+    <svg viewBox="0 0 880 370" role="img" aria-label="Callers use one API. All broker differences are translated at a single adapter boundary, and book reads come from a cache kept warm by background sync.">
+      <defs><marker id="b-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0 8 4 0 8z"/></marker></defs>
+      <text class="u" x="20" y="24">callers</text><text class="u" x="220" y="24">one API, canonical shape</text><text class="u" x="710" y="24">broker-native</text>
+      <rect class="s" x="20" y="40" width="130" height="44"/><text class="t" x="85" y="67" text-anchor="middle">Web app</text>
+      <rect class="s" x="20" y="100" width="130" height="44"/><text class="t" x="85" y="127" text-anchor="middle">Android app</text>
+      <rect class="s" x="20" y="160" width="130" height="44"/><text class="t" x="85" y="187" text-anchor="middle">Flow engine</text>
+      <rect class="s" x="220" y="44" width="180" height="50"/><text class="t" x="310" y="74" text-anchor="middle">POST /intent</text>
+      <rect class="s" x="220" y="134" width="180" height="50"/><text class="t" x="310" y="164" text-anchor="middle">/books, /ws/books</text>
+      <rect class="s" x="220" y="222" width="104" height="50"/><text class="t" x="272" y="244" text-anchor="middle">Redis</text><text class="u" x="272" y="260" text-anchor="middle">book cache</text>
+      <rect class="s" x="372" y="222" width="94" height="50"/><text class="t" x="419" y="244" text-anchor="middle">Book sync</text><text class="u" x="419" y="260" text-anchor="middle">per account</text>
+      <rect class="s" x="220" y="304" width="246" height="50"/><text class="t" x="343" y="325" text-anchor="middle">Candle store</text><text class="u" x="343" y="342" text-anchor="middle">catalog + 1 SQLite per instrument</text>
+      <rect class="a" x="520" y="40" width="124" height="314"/><text class="at" x="582" y="186" text-anchor="middle">Adapter</text><text class="at" x="582" y="203" text-anchor="middle">boundary</text><text class="u" x="582" y="226" text-anchor="middle">both ways</text>
+      <rect class="s" x="710" y="40" width="150" height="50"/><text class="t" x="785" y="60" text-anchor="middle">Kotak</text><text class="u" x="785" y="77" text-anchor="middle">nse_cm</text>
+      <rect class="s" x="710" y="102" width="150" height="50"/><text class="t" x="785" y="122" text-anchor="middle">Upstox, Dhan</text><text class="u" x="785" y="139" text-anchor="middle">NSE_EQ</text>
+      <rect class="s" x="710" y="164" width="150" height="50"/><text class="t" x="785" y="184" text-anchor="middle">5paisa</text><text class="u" x="785" y="201" text-anchor="middle">N + C</text>
+      <rect class="s" x="710" y="226" width="150" height="50"/><text class="t" x="785" y="256" text-anchor="middle">Angel, Flattrade, Alpaca</text>
+      <rect class="s" stroke-dasharray="5 4" x="710" y="288" width="150" height="66"/><text class="t" x="785" y="314" text-anchor="middle">Mock, Replay</text><text class="u" x="785" y="332" text-anchor="middle">simulated</text>
+      <path class="ln" marker-end="url(#b-arrow)" d="M150 62H220"/>
+      <path class="ln" marker-end="url(#b-arrow)" d="M150 122H185V76H220"/>
+      <path class="ln" marker-end="url(#b-arrow)" d="M150 182H172V88H220"/>
+      <path class="ln" marker-end="url(#b-arrow)" d="M150 130H198V150H220"/>
+      <path class="ln" marker-end="url(#b-arrow)" d="M400 69H520"/><text class="u" x="460" y="60" text-anchor="middle">place, cancel</text>
+      <path class="ln" marker-end="url(#b-arrow)" d="M272 222V184"/><text class="u" x="280" y="207">reads</text>
+      <path class="ln" marker-end="url(#b-arrow)" d="M372 247H324"/><text class="u" x="348" y="240" text-anchor="middle">writes</text>
+      <path class="ln" marker-end="url(#b-arrow)" d="M520 247H466"/><text class="u" x="493" y="240" text-anchor="middle">books</text>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M466 329H520"/><text class="u" x="493" y="321" text-anchor="middle">history</text>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M644 65H710"/>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M644 127H710"/>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M644 189H710"/>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M644 251H710"/>
+      <path class="ln" marker-end="url(#b-arrow)" marker-start="url(#b-arrow)" d="M644 321H710"/>
+    </svg>
+    </div>
+    <figcaption>Every broker difference is translated in one place. Book reads never wait on a broker: they come from a cache that background sync keeps warm.</figcaption>
+  </figure>
+  <dl class="stats">
+    <div><dt>live brokers, plus 1 data feed and 3 simulators</dt><dd>7</dd></div>
+    <div><dt>Rust tests passing, 15 ignored</dt><dd>414</dd></div>
+    <div><dt>HTTP routes in the Rust backend</dt><dd>160</dd></div>
+    <div><dt>top Replay speed, with fills per simulated second</dt><dd>500x</dd></div>
+  </dl>
+  <div class="block"><h3>Tech</h3><p>Rust, axum, Tokio, sqlx with SQLite, Redis, JWT and Fernet, SvelteKit, TypeScript, Capacitor, hand-written binary tick and protobuf decoders.</p></div>
+</section>
+
+<section class="project" id="flow">
+  <div class="head"><h2>Flow</h2><p class="tag">Durable graph-flow engine · June 2026 to present</p></div>
+  <div class="cols">
+    <div><h3>The problem</h3><p>A trading workflow that dies halfway can leave orders and positions in an unknown state. A backtest that shares code paths with live trading can also, by accident, reach a real broker.</p></div>
+    <div><h3>What I built</h3><p>An engine that compiles YAML graphs into levels and checkpoints each node's result to SQLite. On restart it resumes unfinished runs from the last completed node. The same flow runs live or against a virtual clock, with a browser editor for building and inspecting flows.</p></div>
+  </div>
+  <figure>
+    <div class="scroll">
+    <svg viewBox="0 0 880 270" role="img" aria-label="A YAML graph compiles to levels and runs with checkpoints in SQLite. The same engine leads either to the real broker path through a pre-trade guard, or to an isolated simulated broker on a virtual clock.">
+      <defs><marker id="f-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0 8 4 0 8z"/></marker></defs>
+      <rect class="s" x="20" y="60" width="120" height="56"/><text class="t" x="80" y="84" text-anchor="middle">YAML graph</text><text class="u" x="80" y="102" text-anchor="middle">validated</text>
+      <rect class="s" x="190" y="60" width="120" height="56"/><text class="t" x="250" y="84" text-anchor="middle">Compiler</text><text class="u" x="250" y="102" text-anchor="middle">Kahn levels</text>
+      <rect class="s" x="360" y="60" width="150" height="56"/><text class="t" x="435" y="84" text-anchor="middle">Engine</text><text class="u" x="435" y="102" text-anchor="middle">each level concurrent</text>
+      <rect class="s" x="360" y="186" width="150" height="66"/><text class="t" x="435" y="210" text-anchor="middle">SQLite</text><text class="u" x="435" y="228" text-anchor="middle">runs, node results,</text><text class="u" x="435" y="243" text-anchor="middle">dead letters</text>
+      <rect class="s" x="590" y="20" width="130" height="56"/><text class="t" x="655" y="44" text-anchor="middle">Pre-trade guard</text><text class="u" x="655" y="62" text-anchor="middle">raw order book</text>
+      <rect class="s" x="760" y="20" width="100" height="56"/><text class="t" x="810" y="53" text-anchor="middle">Bloom</text>
+      <rect class="a" x="590" y="110" width="270" height="56"/><text class="at" x="725" y="133" text-anchor="middle">Simulated broker, isolated state</text><text class="u" x="725" y="152" text-anchor="middle">broker, notify and shell actions blocked</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M140 88H190"/><text class="u" x="165" y="78" text-anchor="middle">parse</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M310 88H360"/>
+      <path class="ln" marker-end="url(#f-arrow)" d="M420 116V186"/><text class="u" x="412" y="148" text-anchor="end">checkpoint, 3 tries</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M450 186V116"/><text class="u" x="458" y="148">resume</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M510 78H550V48H590"/><text class="u" x="550" y="38" text-anchor="middle">real clock</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M510 98H550V138H590"/><text class="u" x="582" y="178" text-anchor="end">virtual clock</text>
+      <path class="ln" marker-end="url(#f-arrow)" d="M720 48H760"/>
+    </svg>
+    </div>
+    <figcaption>Live and backtest differ by one edge. The clock and destination change, the flow doesn't, and a backtest run is prevented from reaching a broker.</figcaption>
+  </figure>
+  <dl class="stats">
+    <div><dt>Rust lines, excluding the private strategy engine</dt><dd>84.0k</dd></div>
+    <div><dt>Rust tests passing*, 23 failing, 3 ignored</dt><dd>1,077</dd></div>
+    <div><dt>node modules</dt><dd>70+</dd></div>
+    <div><dt>commits on main in 15 weeks</dt><dd>450</dd></div>
+  </dl>
+  <div class="block"><h3>Tech</h3><p>Rust, axum, Tokio, sqlx with SQLite (Postgres behind a feature flag), Parquet, a pure-Rust TA-Lib replacement, React editor UI.</p></div>
+</section>
+
+<section class="project" id="stack" aria-label="How the trading stack fits together">
+  <div class="head"><h2>The trading stack, by layer</h2><p class="tag">Bloom and Flow together</p></div>
+  <div class="scroll"><table>
+    <thead><tr><th>Layer</th><th>What runs</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Data pipeline</strong></td><td>Gap detection against stored coverage, then fetches under per-account rate limits that honour every window a broker documents at once. Invalid bars and suspected splits trigger bounded re-fetches. Live ticks from each broker's own feed arrive in one shape.</td></tr>
+      <tr><td><strong>Execution engine</strong></td><td>One intent schema, broker adapters behind a trait, and background book sync with exponential backoff that picks up refreshed tokens without a restart.</td></tr>
+      <tr><td><strong>Risk controls</strong></td><td>A day-level governor (loss limit, profit target, trade count, time window) that can halt entries or force liquidation. A final pre-trade guard that checks the raw broker order book, added after a filtering bug silently hid pending orders. Position caps with reconciliation.</td></tr>
+      <tr><td><strong>Backtesting</strong></td><td>Flows replay on a virtual clock with a simulated broker. Each trading day can run as an independent, parallel slice. Bloom's Replay broker models latency, spread, slippage, gap-through stops and broker-style rejections.</td></tr>
+      <tr class="withheld"><td><strong>Strategy</strong></td><td><span class="w-tag">STRATEGY LOGIC WITHHELD.</span> Signals, parameters, trade data and returns are not shown here or in the public repo.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="project" id="mock">
+  <div class="head"><h2>Mock broker</h2><p class="tag">Broker simulator · April to October 2026</p></div>
+  <div class="cols">
+    <div><h3>The problem</h3><p>Markets are closed on weekends and real brokers are a poor place to test failure paths. Rejections, stops falling through and partial volume are hard to trigger on demand.</p></div>
+    <div><h3>What I built</h3><p>A standalone broker with the full order lifecycle, P&amp;L tracking, saved market scenarios, broker-style rejections, and fills capped to a share of traded volume. It plugs into Bloom like any other broker.</p></div>
+    <div><h3>Architecture</h3><p>A Python API over a locked CSV-backed store with a matching engine. A control UI sets prices and scenarios. It can also trade on prices from a separate simulated market feed.</p></div>
+    <div><h3>Tech</h3><p>Python, FastAPI, pytest, React, TypeScript, Playwright.</p></div>
+  </div>
+  <dl class="stats">
+    <div><dt>pytest tests passing</dt><dd>118</dd></div>
+    <div><dt>Playwright spec files</dt><dd>5</dd></div>
+    <div><dt>API routes</dt><dd>80</dd></div>
+    <div><dt>commits in 6 months</dt><dd>65</dd></div>
+  </dl>
+</section>
+
+<section class="project" id="slovko">
+  <div class="head"><h2>Slovko</h2><p class="tag">Language-learning app · October 2026</p></div>
+  <div class="cols">
+    <div><h3>The problem</h3><p>Every course item produces several kinds of exercise, too many to check by hand. Generated ones can be unfair, offering two right answers or none.</p></div>
+    <div><h3>What I built</h3><p>A Duolingo-style app with lessons, spaced repetition, adaptive difficulty, streaks and speech. A full Slovak course, a Czech starter, and a knowledge course. Guests can use everything, and accounts sync across devices.</p></div>
+    <div><h3>Architecture</h3><p>A Rust server validates course files at startup and serves the API. One web app, with no build step, is wrapped by Capacitor for iOS and Android. Progress lives in the browser and in SQLite, and two devices' saves are merged, not overwritten. A checker generates every exercise for every item, and app builds stop if any is unfair.</p></div>
+    <div><h3>Tech</h3><p>Rust, Axum, SQLite, React 18 with htm, Capacitor, Docker.</p></div>
+  </div>
+  <dl class="stats">
+    <div><dt>commits in 7 days, with an Android beta build</dt><dd>13</dd></div>
+    <div><dt>words in the Slovak course, with 166 sentences</dt><dd>255</dd></div>
+    <div><dt>Rust tests passing</dt><dd>13</dd></div>
+  </dl>
+</section>
+
+<footer class="foot">
+  <p><strong>Where the numbers come from.</strong> Line, commit and route counts were taken from each private repo's git-tracked files. Test counts come from running each suite on 30 and 31 October 2026. *Flow was run serially on a working branch with uncommitted edits, leaving out the strategy engine's own tests. 23 tests fail there. Vendored and generated code is excluded. Line counts include blank lines and comments.</p>
+  <p><strong>What isn't here.</strong> No P&amp;L or returns, by choice. No account, order or instrument data. No private repository is linked.</p>
+</footer>
+</div>
